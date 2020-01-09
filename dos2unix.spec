@@ -1,7 +1,7 @@
 Summary: Text file format converters
 Name: dos2unix
 Version: 6.0.3
-Release: 2%{?dist}
+Release: 4%{?dist}
 Group: Applications/Text
 License: BSD
 URL: http://waterlan.home.xs4all.nl/dos2unix.html
@@ -43,6 +43,12 @@ rm -rf $RPM_BUILD_ROOT%{_docdir}
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 6.0.3-4
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 6.0.3-3
+- Mass rebuild 2013-12-27
+
 * Fri Feb 22 2013 Tim Waugh <twaugh@redhat.com> 6.0.3-2
 - Build requires perl-Pod-Checker.
 - Fixed bogus changelog dates.
