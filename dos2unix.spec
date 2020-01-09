@@ -1,11 +1,14 @@
 Summary: Text file format converters
 Name: dos2unix
 Version: 6.0.3
-Release: 4%{?dist}
+Release: 7%{?dist}
 Group: Applications/Text
 License: BSD
 URL: http://waterlan.home.xs4all.nl/dos2unix.html
 Source: http://waterlan.home.xs4all.nl/dos2unix/%{name}-%{version}.tar.gz
+Source1: dos2unix.1
+Source2: dos2unix-es.1
+Source3: dos2unix-nl.1
 BuildRequires: gettext
 BuildRequires: perl-Pod-Checker
 Provides: unix2dos = %{version}-%{release}
@@ -23,6 +26,10 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
+
+install -m 644 %{SOURCE1} $RPM_BUILD_ROOT/%{_mandir}/man1/dos2unix.1
+install -m 644 %{SOURCE2} $RPM_BUILD_ROOT/%{_mandir}/es/man1/dos2unix.1
+install -m 644 %{SOURCE3} $RPM_BUILD_ROOT/%{_mandir}/nl/man1/dos2unix.1
 
 # We add doc files manually to %%doc
 rm -rf $RPM_BUILD_ROOT%{_docdir}
@@ -43,6 +50,15 @@ rm -rf $RPM_BUILD_ROOT%{_docdir}
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Mar 12 2017 Than Ngo <than@redhat.com> - - 6.0.3-7
+- Resolves: bz#1370965, manpage appears to be truncated
+
+* Fri Mar 10 2017 Than Ngo <than@redhat.com> - - 6.0.3-6
+- Resolves: bz#1370965, bumpspec release to fix the man page issue
+
+* Mon Feb 13 2017 Than Ngo <than@redhat.com> - 6.0.3-5
+- Resolves: bz#1370965, manpage appears to be truncated
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 6.0.3-4
 - Mass rebuild 2014-01-24
 
